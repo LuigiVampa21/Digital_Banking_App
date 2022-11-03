@@ -62,19 +62,16 @@
       <ion-list-header>
         <ion-label>RECENT TRANSACTIONS</ion-label>
       </ion-list-header>
-      <ion-item>
-        <ion-label>
-          Flaticons
-          <p>3:00 PM</p>
+      <ion-item lines="none" *ngFor="let item of transactions">
+        <ion-icon slot="start" name="cash" color="light">
+        </ion-icon>
+        <ion-label size="large" class="ion-text-wrap">
+          <b>{{item.vendor}}</b>
+          <p>{{item?.time}}</p>
         </ion-label>
-        <ion-text slot="end" color="success">$15,000.00</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          Nusr-Et
-          <p>8:00 PM</p>
-        </ion-label>
-        <ion-text slot="end" color="danger">-$2,000.00</ion-text>
+        <ion-text slot="end" [color]="item?.amount > 0 ? 'success' : 'danger'"
+          >₹{{item?.amount}}</ion-text
+        >
       </ion-item>
     </ion-list>
   </ion-grid>
